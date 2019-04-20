@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Rat(name , weight,speed) {
+        this.name = name;
+        this.status = true;
+        this.weight = weight;
+        this.getStatus = function () {
+            if (this.status=== true){
+                document.write(this.name + " is alive.<br>");
+            } else {
+                document.write(this.name + " is dead.<br>");
+            }
+        }
+        this.say = function () {
+            document.write(this.name + ": chit chit<br>");
+        }
+        this.speed = speed;
+    }
+    function Cat(name , weight,speed) {
+        this.name = name;
+        this.weight=weight;
+        this.speed=speed;
+        this.boostSpeed = function () {
+            this.speed += 10;
+        }
+        this.catchRat = function (rat) {
+            if (this.speed > rat.speed) {
+                document.write(this.name + " catched " + rat.name +"<br>");
+            } else {
+                document.write(this.name + " is too slow, hurry up<br>");
+            }
+        }
+        this.eatRat = function (rat) {
+            if (rat.status===true){
+                document.write(this.name + " eat " + rat.name +"<br>");
+                this.weight+=rat.weight;
+                rat.status = false;
+            } else {
+                document.write(rat.name + " is already dead. Can't eat<br>");
+            }
+        }
+        this.getWeight = function () {
+            document.write(this.weight +"<br>");
+        }
+        this.say = function () {
+            document.write(this.name + ": meo meo<br> ");
+        }
+    }
+    var mic = new Rat("Jer", 5, 15);
+    var tom = new Cat("Tom" , 20 , 10);
+    mic.getStatus();
+    mic.say();
+    tom.getWeight();
+    tom.say();
+    tom.catchRat(mic);
+    tom.boostSpeed();
+    tom.catchRat(mic);
+    tom.eatRat(mic);
+    mic.getStatus();
+    tom.getWeight();
+    mic.getStatus();
+    tom.eatRat(mic);
+</script>
+</body>
+</html>
